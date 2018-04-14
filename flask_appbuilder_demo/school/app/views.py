@@ -49,4 +49,5 @@ appbuilder.add_view(DepartmentView, "Department", icon="gear",category='School M
 appbuilder.add_view(MajorView, "Major", icon="gear", category='School Manage')
 appbuilder.add_view(MClassView, "MClass", icon="gear", category='School Manage')
 appbuilder.add_view(TeacherView, "Teacher", icon="gear",category='School Manage')
+appbuilder.add_separator("School Manage")
 appbuilder.add_view(StudentView, "Student", icon="gear",category='School Manage')
