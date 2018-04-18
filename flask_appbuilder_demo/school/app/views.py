@@ -40,6 +40,24 @@ class TeacherView(ModelView):
 class StudentView(ModelView):
     datamodel = SQLAInterface(Student)
 
+def count_student(self):
+    if self.college_id:
+        return self.college_id
+    return 0
+
+class StudentDirectByChartView(DirectByChartView):
+    datamodel = SQLAInterface(Student)
+
+    chart_title = 'Direct Data Example'
+    definitions = [
+        {
+            'label': 'just a label',
+            'group': 'birthday',
+            'series': ['count_student',
+                    'major_id']
+        }
+    ]
+
 db.create_all()
 
 # 这里将6个视图作为子菜单添加到了`School Manage`菜单中：
@@ -51,3 +69,5 @@ appbuilder.add_view(MClassView, "MClass", icon="gear", category='School Manage')
 appbuilder.add_view(TeacherView, "Teacher", icon="gear",category='School Manage')
 appbuilder.add_separator("School Manage")
 appbuilder.add_view(StudentView, "Student", icon="gear",category='School Manage')
+
+appbuilder.add_view(StudentDirectByChartView, "Show Chart", icon="fa-dashboard", category="Statistics")
